@@ -10,11 +10,15 @@ import Foundation
 struct CulDeChouette {
     
     static func chouette(tirage: [Int]) -> Int? {
-        return 2
+        Dictionary(grouping: tirage, by: { $0 }).filter { $1.count > 1 }.keys.first
     }
     
-    static func getResult(tirage: [Int]) -> Int {
-        return 4
+    static func getResult(chouette: Int?) -> Int {
+        guard let chouette = chouette else {
+            return 0
+        }
+        
+        return chouette * chouette
     }
 }
 
